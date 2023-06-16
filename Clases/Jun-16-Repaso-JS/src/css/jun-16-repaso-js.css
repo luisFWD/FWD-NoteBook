@@ -1,0 +1,11 @@
+
+
+.card{
+    background-color: rgba(100, 100, 100, 0.067);
+    backdrop-filter: blur(0.3);
+}
+
+
+.pink-card{
+    background-color: rgba(255, 131, 238, 0.516);
+}
