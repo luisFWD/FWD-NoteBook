@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TO DO List</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/css/pjToDo.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    />
+  </head>
+  <body>
+    <main>
+      <div
+        class="todo-app-container d-flex row justify-content-center align-items-center"
+      >
+        <div
+          class="todo-app-window col-md-8 gap-3 d-flex justify-content-center align-items-center flex-column p-5"
+        >
+          <!-- Heading -->
+          <div class="row">
+            <div class="col">
+              <h1>Tareas por Hacer</h1>
+            </div>
+          </div>
+
+          <!-- Panel -->
+          <div class="control-panel row gap-2 d-flex justify-content-between">
+            <div class="col-md-5 p-0 d-flex flex-column gap-2">
+              <label id="add-todo-input-description" class="visually-hidden">
+                Ingrese la tarea que desea agregar
+              </label>
+              <input
+                id="add-todo-input"
+                type="text"
+                placeholder="Agregar tarea"
+                class="form-control"
+                aria-describedby="add-todo-input-description"
+              />
+
+              <button id="add-todo-button" class="btn btn btn-primary">
+                Agregar tarea
+              </button>
+            </div>
+            <div class="col-md-5">
+              <div class="row">
+                <div class="col">
+                  <span>Tareas <br />Completadas</span>
+                </div>
+                <div class="col">
+                  <div
+                    class="circle-container d-flex justify-content-center align-items-center"
+                  >
+                    <span id="todo-counter-label">0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TODO Box -->
+
+          <ul id="todo-container" class="row todo-container">
+            <li id="notaNoTareas" class="emptyCard">
+              No hay tareas pendientes
+            </li>
+            <!-- <li class="todo-item">
+              <div>
+                <input type="checkbox" class="form-check-input" value="" />
+                <span>Hacer la Tarea de programacion</span>
+              </div>
+              <button class="delete-button">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </body>
+  <script src="src/js/pjToDo.js"></script>
+</html>

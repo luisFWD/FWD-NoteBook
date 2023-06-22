@@ -1,0 +1,65 @@
+
+main{
+    height: 100%;
+    min-height: 100vh;
+}
+
+.anaquel{
+    width: 600px;
+
+    border-radius: 20px;
+    border: 1px solid gray;
+    padding: 20px;
+
+    overflow-y: auto;
+    gap:10px;
+
+    position: relative;
+}
+.fruta-contenedor{
+    border-radius: 10px;
+
+    padding: 10px;
+    height: 200px;
+    width: 179px;
+
+}
+
+
+
+.fruta-imagen{
+    background-color: lightblue;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    position: relative;
+}
+
+.fruta-imagen > button{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+.fruta-precio{
+
+}
+.fruta-nombre{
+
+}
+
+
+
+.task{
+    background-color: pink;
+} 
+
+.round-border{
+    border-radius: 50px;
+}
