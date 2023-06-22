@@ -1,0 +1,159 @@
+body {
+    background-color: #f0f0f0;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+@keyframes shake{
+    25% { transform: translateX(4px);}
+    50% {transform: translateX(-4px);}
+    75% {transform: translateX(4px);}
+}
+.shake{
+    animation: shake 0.5s ease-in-out;
+}
+
+.hide{
+    opacity: 0;
+}  
+  
+.todo-app-container{
+    min-height: 100vh;
+}
+
+.todo-app-window{
+    height: 100%;
+
+    background-color: rgb(244, 244, 244);
+    filter: drop-shadow(6px 6px 4px rgb(212, 212, 212));
+
+    transition: height 0.5s ease;
+}
+
+.control-panel{
+    width: 100%;
+}
+
+.circle-container{
+    height: 50px; 
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid gray;
+}
+
+
+
+.todo-container{
+    padding: 25px 0px;
+    width: 100%;
+    gap: 5px;
+    visibility: hidden;
+
+
+
+}
+.todo-container > *{
+    visibility: visible;
+    transition: opacity 200ms;
+
+}
+
+.todo-container:hover > :not(:hover){
+    opacity: 0.5;
+}
+
+.todo-item{
+    border: 1px solid gray;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding: 5px 10px;
+    gap: 5px;
+    border-radius: 10px;
+    justify-content: space-between;
+    height: 4em;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.todo-item-check{
+    margin-right: 5px;
+}
+
+.todo-text-container{
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+}
+
+.todo-text-container > p{
+    margin-bottom: 0;
+}
+
+.overflow-dots{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+     
+}
+
+.delete-button{
+    border: none;
+    background-color: transparent;
+    width: fit-content;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.delete-button > i{
+    color: red;    
+    overflow: hidden;
+    position: relative;
+}
+
+.delete-button:hover {
+    background-color: red;
+    color: white;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.delete-button:hover ::after{
+    content: "eliminar";
+    color: white;
+}
+
+.delete-button:hover > i {
+    color: white;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+
+.emptyCard {
+    border-radius: 25px;
+    height: 5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightblue;
+}
+
+.oculto{
+    display:none;
+}

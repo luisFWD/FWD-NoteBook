@@ -212,5 +212,5 @@ console.log(listaDeEstudiante);
 
 ///splice funciona tambien para agregar objetos en una posicion
 var frutas = ["pera", "manzana", "uva"];
-console.log(frutas.splice(1, 0, "tomate"));
+console.log(frutas.splice(1, 2));
 console.log(frutas);
