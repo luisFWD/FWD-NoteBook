@@ -134,10 +134,43 @@ console.log("")
 
 
 
-const verduras = [
-    { nombre: "Zanahorias", cantidad: 10 },
-    { nombre: "Tomates", cantidad: 5 },
-    { nombre: "Lechugas", cantidad: 8 },
-    { nombre: "Pimientos", cantidad: 3 },
-    { nombre: "Espinacas", cantidad: 6 },
+let verduras = [
+    { nombre: "Zanahorias", cantidad: 7 },
+    { nombre: "Tomates", cantidad: 4 },
+    { nombre: "Lechugas", cantidad: 9 },
+    { nombre: "Pimientos", cantidad: 1 },
+    { nombre: "Espinacas", cantidad: 8 },
+];
+
+function contarVerduras(contador, objetoActual) {
+    return contador + objetoActual.cantidad;
+}
+//funcion    valor inicial = 0
+var listaContarVeduras = verduras.reduce(contarVerduras, 0)
+
+console.log(listaContarVeduras);
+
+console.log("=============================================")
+console.log("")
+
+function agregarVerduras(contador, objetoActual) { //CONTADOR = ""
+    let listaNueva = contador.concat([objetoActual.nombre]);
+
+    console.log("contador", contador);
+    console.log("contador", objetoActual.cantidad);
+
+    return listaNueva;
+}
+//funcion    valor inicial = []
+var listaNuevaVeduras = verduras.reduce(agregarVerduras, [])
+
+console.log(listaNuevaVeduras);
+
+
+
+var listaChocolates2 = [
+    { sabor: "chocolate amargo", cantidad: 4 },
+    { sabor: "chocolate de leche", cantidad: 1 },
+    { sabor: "chocolate blanco", cantidad: 2 },
+    { sabor: "chocolate en polvo", cantidad: 3 }
 ];
