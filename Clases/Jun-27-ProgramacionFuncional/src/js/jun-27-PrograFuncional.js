@@ -231,6 +231,8 @@ function soloPalabrasCortas(palabra) {
 
 }
 
+
+
 var nuevaListaPalabras = palabras.filter(soloPalabrasCortas);
 
 console.log(nuevaListaPalabras);
@@ -255,10 +257,17 @@ function varificarNota(estudiante) {
     }
 }
 
+
+
 var estudiantesAprovados = estudiantes.filter(varificarNota)
 
 
 console.log(estudiantesAprovados);
+
+console.log("======================================");
+console.log("======== Map/Filter Practica =========");
+console.log("======================================");
+
 
 
 
@@ -267,7 +276,7 @@ console.log(estudiantesAprovados);
  * solo los productos con un precio menor o igual a cierto valor.
  */
 
-const productos = [
+var productos = [
     { nombre: 'Camiseta', precio: 20 },
     { nombre: 'Pantalón', precio: 35 },
     { nombre: 'Zapatos', precio: 50 },
@@ -275,3 +284,85 @@ const productos = [
 ];
 
 const precioMaximo = 30;
+
+
+// MAP   - cambia objetos en mi lista 
+// FILTER - filtra mi lista y retorna solo los que cumplen
+// REDUCE - comprime mi lista
+
+//arreglos o listas
+var listaFrutas = ["manzana gala",
+    "manzana mashintosh",
+    "manzana pequena",
+    "pera",
+    "chayote",
+    "banana"
+];
+
+console.log("======================================");
+console.log("======== 28 junio =========");
+console.log("======================================");
+
+
+
+
+function hacerMayusculas(fruta) {
+    return fruta.toUpperCase();
+}
+
+var listaFrutaEnMayuscula = listaFrutas.map(hacerMayusculas);
+
+console.log(listaFrutaEnMayuscula);
+
+
+var equiposFutball = [
+    { nombre: "Estados Unidos" },
+    { nombre: "Brasil" },
+    { nombre: "España" },
+    { nombre: "Inglaterra" },
+    { nombre: "Argentina" },
+    { nombre: "Sele" }
+];
+
+function clasificarEquipo(objetoDeLaLista) {// 
+    let clasificado = "CLASIFICADO";
+    if (objetoDeLaLista.nombre == "Sele") {
+        clasificado = "NO clasificado";
+    }
+
+    return { nombre: objetoDeLaLista.nombre, clasificado: clasificado }
+}
+
+var listaMundial = equiposFutball.map(clasificarEquipo); // clasificarEquipo(objeto3)
+
+console.log(listaMundial);
+
+
+
+
+
+/*
+const calificaciones = [90, 75, 60, 85];
+retornar las calificaciones
+*/
+
+/**
+ * const preciosEnDolares = [20, 50, 10, 30];
+const tasaCambio = 0.85; // Conversión a colones
+ * 
+ */
+
+
+var listaNotas = [{ nota: 96 }]
+
+function sumar5(chocolate) {
+
+    var nuevaCantidad = chocolate.cantidad + 5;
+
+    var nuevaNota = { sabor: chocolate.sabor, cantidad: nuevaCantidad };
+    return nuevaNota;
+}
+
+var ListaNotasCorregida = listaNotas.map(sumar5);
+
+console.log(ListaNotasCorregida);
