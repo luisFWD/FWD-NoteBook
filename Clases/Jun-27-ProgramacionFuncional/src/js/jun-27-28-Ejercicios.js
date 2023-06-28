@@ -168,9 +168,74 @@ console.log(listaNuevaVeduras);
 
 
 
+
+
+
+
+var numeros = [19, 51, 81, 25, 45, 86];
+//map - cambia cosas de la lista ]] map retorna una nueva lista
+
+function sumar10(numeroParametro) {
+    return "mi numero" + (numeroParametro + 10)
+}
+
+var nuevosNumeros = numeros.map(sumar10); //  []
+
+console.log(nuevosNumeros);
+
+
+
 var listaChocolates2 = [
     { sabor: "chocolate amargo", cantidad: 4 },
     { sabor: "chocolate de leche", cantidad: 1 },
     { sabor: "chocolate blanco", cantidad: 2 },
     { sabor: "chocolate en polvo", cantidad: 3 }
 ];
+
+function aumentarInventario(chocolate) {// chocolate = { sabor: "chocolate amargo", cantidad: 4 },
+    return { sabor: chocolate.sabor, cantidad: chocolate.cantidad + 10 }
+}
+var nuevaLIstaChocolates = listaChocolates2.map(aumentarInventario);
+
+console.log(nuevaLIstaChocolates)
+
+
+function chocolatesConCantidad(chocolate) {
+    return chocolate.cantidad > 2;
+}
+
+var nuevaListaChocolatesCantidad = listaChocolates2.filter(chocolatesConCantidad)
+
+console.log(nuevaListaChocolatesCantidad)
+
+
+function reduceChocolate(contador, objetoActual) {
+    return contador + objetoActual.cantidad
+}
+
+var listaCantidadChocolates = listaChocolates2.reduce(reduceChocolate, 0);
+
+
+console.log(listaCantidadChocolates);
+
+
+console.log("")
+console.log("=============================================")
+console.log("")
+
+
+var listaPeces = ["nemo", "dory", "bob", "gary"];
+
+function contarLetras(contador, objetoActual) {
+
+    console.log("Mi objeto actual:", objetoActual);
+    console.log("Mi contador:", contador);
+
+    return contador + objetoActual.length;
+}
+
+var listaPecesNueva = listaPeces.reduce(contarLetras, 0);
+
+console.log(listaPecesNueva)
+
+
