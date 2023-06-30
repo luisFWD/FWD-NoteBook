@@ -1,3 +1,8 @@
+
+//  COOOKIIIES
+
+var listaTareasGlobal = [];
+
 var todoList = [
     // {
     //     id: 
@@ -5,6 +10,111 @@ var todoList = [
     //     isComplete: 
     // }
 ];
+
+
+var miListaDeTareas = ["Tarea 1", "Tarea 2", "Tarea 3  que nunca hago"];
+
+//  document.cookie
+
+function crearCookie() {
+
+    //JSON
+    let tareasEnTexto = JSON.stringify(miListaDeTareas);
+    console.log("mi lista ahora es ", tareasEnTexto);
+
+    document.cookie = "millave=" + tareasEnTexto;
+    // `${}`
+
+}
+
+
+
+
+const botonSetearCookie = document.getElementById("setbtn");
+
+const botonGetCookie = document.getElementById("getbtn");
+
+botonSetearCookie.addEventListener("click", crearCookie);
+
+botonGetCookie.addEventListener("click", leerCookie);
+
+
+
+
+
+// function agregarTareaCookie(tarea) {
+
+//     listaTareasGlobal.push(tarea); //Agrega la tarea
+
+//     let listaTareasGlobalCadenaTexto = JSON.stringify(listaTareasGlobal);
+//     document.cookie = "listaTareas=" + listaTareasGlobalCadenaTexto;
+
+// }
+
+// function eliminarTareaCookie(tarea) {
+
+//     //1 buscar la tarea en la lista
+//     let indiceTarea = listaTareasGlobal.findIndex(algunaTarea =>
+//         algunaTarea.toUpperCase() == tarea.toUpperCase());
+
+//     // findIndex retorna -1 si no la encuentra y un numero con el indice si lo encuentra
+//     if (indiceTarea >= 0) {
+
+//         listaTareasGlobal.splice(indiceTarea, 1); //elimina la tarea de la lista
+
+//         let listaTareasGlobalCadenaTexto = JSON.stringify(listaTareasGlobal);
+//         document.cookie = "listaTareas=" + listaTareasGlobalCadenaTexto;
+//     }
+// }
+
+
+// function optenerCookie() {
+
+//     let galleta = document.cookie;
+
+//     let galletaDividida = galleta.split("=");
+
+//     alert();
+
+
+//     if (galletaDividida.length > 0 && galletaDividida[1]) {
+//         let jsLista = JSON.parse(galletaDividida[1])
+
+//         listaTareasGlobal = jsLista;
+
+//         //solo luis
+//         todoList = listaTareasGlobal;
+//         paintTodos();
+//         //solo luis
+
+//         //for( let indice = 0  ; indice < jsLista.length ; indice ++ ){
+//         //    agregarTarea(jsLista[indice]);
+//         //}
+
+//         alert(jsLista[1]);
+
+//     }
+// }
+
+
+//agregarTareaCookie("tarea1");
+
+//optenerCookie();
+
+
+
+
+
+
+
+
+
+
+
+//// FIN COOKIES 
+
+
+
 
 var counter = 0;
 var etiquetaNoTareas = document.getElementById("notaNoTareas");
@@ -179,11 +289,7 @@ function paintTodos() {
 }
 
 
-
-
-
-function addTodo() {
-
+function vericarCampoTexto() {
     //Optener texto usuario
     var addTodoInputValue = addTodoInput.value;
 
@@ -204,13 +310,19 @@ function addTodo() {
         return;
     }
     //Fin de Validar que no hay repetidos
+    addTodo(addTodoInputValue)
 
 
+}
+
+
+
+function addTodo(tareaPorAgregar) {
 
 
     var newTodoItem = {
         id: new Date().getTime(),
-        todoText: addTodoInputValue,
+        todoText: tareaPorAgregar,
     }
 
     todoList.push(newTodoItem);
@@ -225,8 +337,43 @@ function addTodo() {
 
 
 
-addTodoButton.addEventListener("click", addTodo);
+addTodoButton.addEventListener("click", vericarCampoTexto);
 
 paintTodos();
 countTareas();
 
+
+
+
+
+
+function leerCookie() {
+
+    let miCookie = document.cookie;
+    let arrayCookie = miCookie.split("=");
+
+
+    if (arrayCookie.length < 2) {
+        alert("no hay cookie")
+    } else {
+        //[ 'millave', 'credenciales super secretas' ]
+
+        var miListaNuevaDeTareas = JSON.parse(arrayCookie[1]);
+        console.log("Mi cookie es : ", miListaNuevaDeTareas);
+
+        for (let indice = 0; indice < miListaNuevaDeTareas.length; indice++) {
+            addTodo(miListaNuevaDeTareas[indice]);
+        }
+
+    }
+
+
+
+}
+
+
+
+
+//optenerCookie();
+
+leerCookie();
