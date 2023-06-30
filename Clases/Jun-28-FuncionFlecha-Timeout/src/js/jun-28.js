@@ -88,10 +88,9 @@ console.log(resultadoReduce);
 
 
 
-var etiquetaBoton = document.getElementById("boton");
 
 
-etiquetaBoton.addEventListener("click", () => { console.log(" No se cuantos hoyos tiene un pajilla"); })
+// etiquetaBoton.addEventListener("click", () => { console.log(" No se cuantos hoyos tiene un pajilla"); })
 
 
 
@@ -161,17 +160,185 @@ setTimeout(() => {
 var etiquetaCount = document.getElementById("count");
 var etiquetaCountMin = document.getElementById("countMin");
 
-var counter = 60;
-var counterMin = 1;
+var count = 60;
+var countMin = 1;
 
-setInterval(() => {
-    counter--;
+var idRelog;//undefinido
 
-    if (counter == 0) {
-        counter = 60;
-        counterMin--;
+
+function pararReloj() {
+    clearInterval(idRelog);
+}
+
+
+
+function resetReloj() {
+    count = 60;
+    countMin = 1;
+    clearInterval(idRelog);//
+    idRelog = setInterval(() => {
+        count--;
+
+        if (count == 0) {
+            count = 60;
+            countMin--;
+        }
+        etiquetaCount.textContent = count;
+        etiquetaCountMin.textContent = countMin;
+
+    }, 1000);
+
+}
+
+function iniciarReloj() {
+    clearInterval(idRelog);//
+    idRelog = setInterval(() => {
+        count--;
+
+        if (count == 0) {
+            count = 60;
+            countMin--;
+        }
+        etiquetaCount.textContent = count;
+        etiquetaCountMin.textContent = countMin;
+
+    }, 1000);
+}
+
+
+var etiquetaBoton = document.getElementById("boton");
+etiquetaBoton.addEventListener("click", pararReloj);
+
+var etiquetaBotonReset = document.getElementById("boton2");
+etiquetaBotonReset.addEventListener("click", resetReloj);
+
+var etiquetaBotonInicio = document.getElementById("botonInicio");
+etiquetaBotonInicio.addEventListener("click", iniciarReloj);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+console.log("===================================================");
+console.log("========== Llamados a Apis  - Promises ============");
+console.log("===================================================");
+
+
+// FETCH( URL servidor )
+
+// var promesaUsuarios
+//promesaUsuarios // undefined
+
+//espero 2 minutos
+//  promesaUsuarios { luis, diego}
+
+
+
+const url = 'https://pokeapi.co/api/v2/pokemon/pikachu';
+
+function obtenerInformacionPokemon() {
+
+    fetch(url)
+        .then(response => {
+            console.log(response);
+            if (response.ok) {
+                return response.json();
+            } //else {
+            //  throw new Error('No se pudo obtener la información del Pokémon.');
+            // }
+        })
+        .then(data => {
+            // Mostrar los datos en la consola
+            console.log('Nombre:', data.name);
+            console.log('ID:', data.id);
+            console.log('Habilidades:');
+            data.abilities.forEach(ability => {
+                console.log('- ', ability.ability.name);
+            });
+            // Puedes mostrar más datos según tus necesidades
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+// Llamada a la función con el nombre del Pokémon deseado
+obtenerInformacionPokemon('pikachu');
+
+
+
+function obtenerInformacionPokemon() {
+
+    fetch(url)
+        .then(response => {
+            console.log(response);
+            if (response.ok) {
+                return response.json();
+            } //else {
+            //  throw new Error('No se pudo obtener la información del Pokémon.');
+            // }
+        })
+        .then(data => {
+            // Mostrar los datos en la consola
+            console.log('Nombre:', data.name);
+            console.log('ID:', data.id);
+            console.log('Habilidades:');
+            data.abilities.forEach(ability => {
+                console.log('- ', ability.ability.name);
+            });
+            // Puedes mostrar más datos según tus necesidades
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
+
+
+
+function division(A, B) {
+
+
+    try {
+        if (B === 0) {
+            throw new Error();
+        }
+        return A / B
     }
-    etiquetaCount.textContent = counter;
-    etiquetaCountMin.textContent = counterMin;
+    catch (e) {
+        console.log("No puedes dividir por cero");
+    }
 
-}, 1000)
+
+
+
+}
+
+var resultado = division(4, 0)
+console.log(resultado);
+
+
+
+
+`
+    POST - Enviar datos al servidor
+    GET - Para solicitar datos
+    PUT - Alterar o cambiar un dato
+    DELETE - Eliminar un dato
+`
+
+
+
+
+
+
