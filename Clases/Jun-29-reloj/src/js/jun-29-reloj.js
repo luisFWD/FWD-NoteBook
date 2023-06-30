@@ -1,33 +1,29 @@
+//=================================== Imports
+import { PI } from "./variables.js";
+
+//=================================== Variables Globales
+
+var fechaNai = new Date().toLocaleDateString();
+var miHora = new Date();
+var misMinutos = miHora.getMinutes()
+var misHoras = miHora.getHours()
+var misSegundos = miHora.getSeconds()
+var segundos = misSegundos;
+var minutos = misMinutos;
+var horas = misHoras;
+var idReloj; //estoy definido afuera
+
+//=================================== Etiquetas Fijas
 
 var etiquetaMinutos = document.getElementById("minutosH2");
 var etiquetaSegundos = document.getElementById("segundosH2");
 var etiquetaHoras = document.getElementById("horasH2");
 
-
 var fecha = document.getElementById("fecha");
-
-
-var fechaNai = new Date().toLocaleDateString();
 fecha.textContent = fechaNai;
-var miHora = new Date();
 
-var misMinutos = miHora.getMinutes()
 
-var misHoras = miHora.getHours()
-
-var misSegundos = miHora.getSeconds()
-
-var miFecha = miHora.getDate() + "/" + (miHora.getMonth() + 1) + "/" + miHora.getFullYear()
-
-console.log(misHoras, ":", misMinutos, "fecha ", miFecha);
-
-var segundos = misSegundos;
-var minutos = misMinutos;
-var horas = misHoras;
-
-iniciar();
-
-var idReloj; //estoy definido afuera
+//=================================== Funciones
 
 function iniciar() {
     clearInterval(idReloj);
@@ -64,6 +60,8 @@ function reset() {
     etiquetaSegundos.textContent = segundos;
 }
 
+//=================================== Listener
+
 var etiquetaBtnInicio = document.getElementById("btnIncio");
 etiquetaBtnInicio.addEventListener("click", iniciar);
 
@@ -78,27 +76,31 @@ etiquetaBtnReset.addEventListener("click", reset);
 
 
 
+
+
 console.log("============================================");
 console.log("===================VOTAR======================");
 console.log("============================================");
 
+//=================================== Imports
 
-
-
-
+//=================================== Variables Globales
 var listVotes = [
     { votes: 0, name: "Brayan" },
 
 
 
     { votes: 0, name: "Raul" }
-];
-// { votes:0,name:""}
+]; // { votes:0,name:""}
 
 
-
+//=================================== Etiquetas Fijas
 
 var contenedor = document.getElementById("containerr");
+
+
+
+//=================================== Funciones
 
 for (let indice = 0; indice < listVotes.length; indice++) {
     const element = listVotes[indice];
@@ -119,31 +121,38 @@ for (let indice = 0; indice < listVotes.length; indice++) {
 
 
 
+//=================================== Codigo
+//=================================== Listener
+
+
 
 console.log("============================================");
 console.log("===============FETCH====================");
 console.log("============================================");
 
 
+//=================================== Imports
+
+
+//=================================== Variables Globales
 
 
 // FETCH es una funcion de JS para hacer peticiones a web
 
 var promesaVariable = fetch("https://restcountries.com/v3.1/all");
 
-
+//=================================== Codigo
 promesaVariable.then(
     (response) => {
 
         if (response.ok) {
             console.log("todo ok");
-            return response.json();
+            return response.json();//la data se pueda ver
         } else {
             console.log(
                 "hubo un error"
             );
         }
-
     }
 ).then(
 
@@ -151,32 +160,41 @@ promesaVariable.then(
 
         for (let index = 0; index < data.length; index++) {
             const element = data[index];
-            // console.log(element.name);
+            console.log(element);
         }
     }
 )
 
 
-function pokerap(entriesArray) {
-    for (let indice = 0; indice < entriesArray.length; indice++) {
-        const element = entriesArray[indice];
-        let pokemon = element.pokemon_species.name;
-        console.log(pokemon)
 
-    }
+
+//=================================== Variables Globales
+var pokemonNumber = 0;
+var rapEtiqueta = document.getElementById("rap"); //<p id="rap"></p>
+
+
+//=================================== Funciones
+function pokerap(entriesArray) {
+
+    setInterval(
+        () => {
+            const element = entriesArray[pokemonNumber];
+            let pokemon = element.pokemon_species.name;
+            rapEtiqueta.textContent = pokemon;
+            pokemonNumber = (pokemonNumber + 1) % entriesArray.length;
+            // modulo (151 + 1 ) % 151 = 1
+
+        }, 1000
+    )
 }
 
+//=================================== Codigo
 var miPromesaPokemon = fetch("https://pokeapi.co/api/v2/pokedex/kanto/")
 miPromesaPokemon.then(
     (response) => {
-        if (response.ok) {
-            return response.json();
-        }
-        else {
-            console.log("Hay un error");
-        }
+        if (response.ok) { return response.json(); }
+        else { console.log("Hay un error"); }
     }
-
 ).then(
     (data) => {
         console.log(data);
@@ -185,4 +203,9 @@ miPromesaPokemon.then(
     }
 )
 
-console.log("hOLA MUNDO")
+
+console.log(PI);
+
+
+
+iniciar();
