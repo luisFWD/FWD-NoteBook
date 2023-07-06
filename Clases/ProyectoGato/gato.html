@@ -4,27 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="src/css/stilos.css" />
   </head>
   <body>
-    <audio id="miAudio" src=""></audio>
-    <h1>Lista</h1>
-    <h2>manu</h2>
-    <h2>joshua</h2>
-    <h2>wanda</h2>
-    <div id="cuadro" class="luis">
-      <div id="botones">
-        <button id="celda-00" class="btn">O</button>
-        <button id="celda-01" class="btn">1</button>
-        <button id="celda-02" class="btn">2</button>
-        <button id="celda-10" class="btn">3</button>
-        <button id="celda-11" class="btn">4</button>
-        <button id="celda-12" class="btn">5</button>
-        <button id="celda-20" class="btn">6</button>
-        <button id="celda-21" class="btn">7</button>
-        <button id="celda-22" class="btn">8</button>
+    <header>
+      <nav>
+        <ul class="navigation-container">
+          <li>Player</li>
+          <li><h1>Gato</h1></li>
+          <li>Player</li>
+        </ul>
+      </nav>
+    </header>
+
+    <audio id="myAudio" controls>
+      <source src="./src/js/african-inspiration-3290.mp3" type="audio/mpeg" />
+    </audio>
+
+    <button id="btn-audiio">Audio</button>
+    <main>
+      <div class="buttons-container">
+        <div class="buttons-container_row">
+          <button id="celda-00" class="btn custom-cell">O</button>
+          <button id="celda-01" class="btn custom-cell">1</button>
+          <button id="celda-02" class="btn custom-cell">2</button>
+        </div>
+        <div class="buttons-container_row">
+          <button id="celda-10" class="btn custom-cell">3</button>
+          <button id="celda-11" class="btn custom-cell">4</button>
+          <button id="celda-12" class="btn custom-cell">5</button>
+        </div>
+        <div class="buttons-container_row">
+          <button id="celda-20" class="btn custom-cell">6</button>
+          <button id="celda-21" class="btn custom-cell">7</button>
+          <button id="celda-22" class="btn custom-cell">8</button>
+        </div>
       </div>
-    </div>
+    </main>
+    <section></section>
   </body>
 
   <script src="src/js/logica.js"></script>
