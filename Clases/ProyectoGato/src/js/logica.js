@@ -5,13 +5,34 @@
 var jugadorActual = "X";
 
 var turnosRestantes = 9;
-var ganadorJuego = false;
+var juegoTerminado = false;
 
 var matrizJuego = [
     [{ celda: "celda-00", jugador: "" }, { celda: "celda-01", jugador: "" }, { celda: "celda-02", jugador: "" }],
     [{ celda: "celda-10", jugador: "" }, { celda: "celda-11", jugador: "" }, { celda: "celda-12", jugador: "" }],
     [{ celda: "celda-20", jugador: "" }, { celda: "celda-21", jugador: "" }, { celda: "celda-22", jugador: "" }],
 ];
+
+var listaEtiquetasBoton = document.querySelectorAll(".btn");
+
+
+
+function guardar() {
+    localStorage.setItem("millave", 2);
+    localStorage.setItem("millave2", 5);
+}
+
+function sacar() {
+    var cosa = localStorage.getItem("millave");
+    console.log(cosa);
+    var cosa2 = localStorage.getItem("millave2");
+    console.log(cosa2);
+}
+guardar()
+sacar()
+var data = localStorage.getItem("mi llave");
+console.log(data);
+
 
 
 
@@ -89,7 +110,10 @@ function actualizarTablero(idBoton) {
                 botonPlayer.disabled = true;
 
                 //restar en 1 los turnos
-                turnosRestantes -= 1;
+                if (turnosRestantes > 0) {
+                    turnosRestantes -= 1;
+                }
+
 
 
                 let ganador =
@@ -98,8 +122,11 @@ function actualizarTablero(idBoton) {
                     validarDiagonalA(jugadorActual) ||
                     validarDiagonalB(jugadorActual);
                 if (ganador === true) {
-                    ganadorJuego = true;
+                    juegoTerminado = true;
                     alert("EL JUGADOR " + jugadorActual + " HA GANADO");
+                } else if (juegoTerminado === false && turnosRestantes === 0) {
+                    juegoTerminado = true;
+                    alert("NINGUN JUGADOR HA GANADO EMPATE");
                 }
                 break;
             }
@@ -111,7 +138,7 @@ function actualizarTablero(idBoton) {
 
 
 function turnoComputadora() {
-    if (turnosRestantes === 0 || ganadorJuego) {
+    if (turnosRestantes === 0 || juegoTerminado) {
         return;
     }
 
@@ -140,18 +167,35 @@ function turnoComputadora() {
 
 }
 
+function resetGame() {
+    jugadorActual = "X";
+    turnosRestantes = 9;
+    juegoTerminado = false;
+
+    for (let indiceFila = 0; indiceFila < matrizJuego.length; indiceFila++) {
+        const fila = matrizJuego[indiceFila];
+        for (let indiceCol = 0; indiceCol < fila.length; indiceCol++) {
+
+            matrizJuego[indiceFila][indiceCol].jugador = "";
+
+        }
+    }
+    listaEtiquetasBoton.forEach(element => { element.innerHTML = ""; element.disabled = false })
+
+}
+
+
 // 4. Lógica principal
 
 // 5. Eventos y manejo de interacciones
 // No se requieren eventos en este ejemplo
 
 
-var listaEtiquetasBoton = document.querySelectorAll(".btn")
 
 for (let indiceListaBoton = 0; indiceListaBoton < listaEtiquetasBoton.length; indiceListaBoton++) {
     let boton = listaEtiquetasBoton[indiceListaBoton];
     boton.addEventListener("click", () => {
-        if (ganadorJuego) {
+        if (juegoTerminado) {
             return;
         }
         actualizarTablero(boton.id);
@@ -164,8 +208,30 @@ for (let indiceListaBoton = 0; indiceListaBoton < listaEtiquetasBoton.length; in
 
 }
 
+document.getElementById("btnReset").addEventListener("click", resetGame);
 
 // 6. Ejecución inicial (si es necesario)
 // No se requiere ejecución inicial
+
+
+
+
+const button = document.querySelector('#button');
+const canvas = document.querySelector('#confetti');
+
+const jsConfetti = new JSConfetti();
+
+button.addEventListener('click', () => {
+    jsConfetti.addConfetti({
+        emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+    }).then(() => jsConfetti.addConfetti())
+})
+
+function conffeti() {
+    jsConfetti.addConfetti({
+        emojis: ['🌈', '⚡️', '💥', '✨', '💫', '🌸'],
+    }).then(() => jsConfetti.addConfetti())
+}
+
 
 

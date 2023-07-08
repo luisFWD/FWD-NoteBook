@@ -1,54 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="src/css/stilos.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul class="navigation-container">
-          <li>Player</li>
-          <li><h1>Gato</h1></li>
-          <li>Player</li>
-        </ul>
-      </nav>
-    </header>
 
-    <audio id="myAudio" controls>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <link rel="stylesheet" href="src/css/stilos.css" />
+</head>
+
+<body class="container">
+  <header>
+    <nav>
+      <ul class="navigation-container">
+        
+        <li>
+          <h1>Gato</h1>
+        </li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <!-- <audio id="myAudio" controls>
       <source src="./src/js/african-inspiration-3290.mp3" type="audio/mpeg" />
-    </audio>
+    </audio> -->
 
-    <button id="btn-audiio">Audio</button>
-    <main>
-      <div class="buttons-container">
-        <div class="buttons-container_row">
-          <button id="celda-00" class="btn custom-cell">O</button>
-          <button id="celda-01" class="btn custom-cell">1</button>
-          <button id="celda-02" class="btn custom-cell">2</button>
-        </div>
-        <div class="buttons-container_row">
-          <button id="celda-10" class="btn custom-cell">3</button>
-          <button id="celda-11" class="btn custom-cell">4</button>
-          <button id="celda-12" class="btn custom-cell">5</button>
-        </div>
-        <div class="buttons-container_row">
-          <button id="celda-20" class="btn custom-cell">6</button>
-          <button id="celda-21" class="btn custom-cell">7</button>
-          <button id="celda-22" class="btn custom-cell">8</button>
-        </div>
+  <!-- <section>
+
+    <div class="row d-flex flex-row">
+      <div class="col-md-4 order-md-1">Contenido 1</div>
+      <div class="col-md-4 order-md-3 order-2">Contenido 3</div>
+      <div class="col-md-4 order-md-2 order-3">Contenido 2</div>
+    </div>
+
+  </section> -->
+
+  <main class="row d-flex flex-row flex-wrap">
+
+
+    <div class="col-md-8 offset-md-2 buttons-container ">
+      <div class="buttons-container_row">
+        <button id="celda-00" class="btn custom-cell" aria-label="casilla superior izquierda"></button>
+        <button id="celda-01" class="btn custom-cell" aria-label="casilla superior central"></button>
+        <button id="celda-02" class="btn custom-cell" aria-label="casilla superior derecha"></button>
       </div>
-    </main>
-    <section></section>
-  </body>
+      <div class="buttons-container_row">
+        <button id="celda-10" class="btn custom-cell" aria-label="casilla central izquierda"></button>
+        <button id="celda-11" class="btn custom-cell" aria-label="casilla central "></button>
+        <button id="celda-12" class="btn custom-cell" aria-label="casilla central derecha"></button>
+      </div>
+      <div class="buttons-container_row">
+        <button id="celda-20" class="btn custom-cell" aria-label="casilla inferior izquierda"></button>
+        <button id="celda-21" class="btn custom-cell" aria-label="casilla inferior central"></button>
+        <button id="celda-22" class="btn custom-cell" aria-label="casilla inferior derecha"></button>
+      </div>
+    </div>
 
-  <script src="src/js/logica.js"></script>
+    <div class="col-md-2 controls-container">
+
+      <h2 id="titleNextPlayer">Turn of: <span aria-live="polite">Second Player</span></h2>
+      <button id="btnReset">Reset</button>
+    </div>
+
+    <canvas id="confetti"></canvas>
+
+
+    <button id="button" class="button-53" role="button">Celebrate!!!</button>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+<script type="module" src="src/js/logica.js"></script>
+
 </html>
