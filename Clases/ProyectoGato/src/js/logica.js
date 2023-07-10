@@ -14,26 +14,7 @@ var matrizJuego = [
 ];
 
 var listaEtiquetasBoton = document.querySelectorAll(".btn");
-
-
-
-function guardar() {
-    localStorage.setItem("millave", 2);
-    localStorage.setItem("millave2", 5);
-}
-
-function sacar() {
-    var cosa = localStorage.getItem("millave");
-    console.log(cosa);
-    var cosa2 = localStorage.getItem("millave2");
-    console.log(cosa2);
-}
-guardar()
-sacar()
-var data = localStorage.getItem("mi llave");
-console.log(data);
-
-
+var titlePlayerName = document.getElementById("titlePlayerName");
 
 
 // 3. Definición de funciones
@@ -44,6 +25,7 @@ function validarDiagonalA(jugador) {
             ganador = true;
         } else {
             ganador = false;
+            console.log("asd");
             break;
         }
     }
@@ -114,8 +96,6 @@ function actualizarTablero(idBoton) {
                     turnosRestantes -= 1;
                 }
 
-
-
                 let ganador =
                     validarColumna(indiceColumna, jugadorActual) ||
                     validarFila(indiceFila, jugadorActual) ||
@@ -123,11 +103,16 @@ function actualizarTablero(idBoton) {
                     validarDiagonalB(jugadorActual);
                 if (ganador === true) {
                     juegoTerminado = true;
-                    alert("EL JUGADOR " + jugadorActual + " HA GANADO");
+                    openModal("FIN DE LA PARTIDA", "EL JUGADOR " + jugadorActual + " HA GANADO");
+                    break;
                 } else if (juegoTerminado === false && turnosRestantes === 0) {
                     juegoTerminado = true;
-                    alert("NINGUN JUGADOR HA GANADO EMPATE");
+                    openModal("EMPATE", "NINGUN JUGADOR HA GANADO");
+                    break;
                 }
+
+
+
                 break;
             }
 
@@ -164,6 +149,7 @@ function turnoComputadora() {
 
 
     jugadorActual = jugadorActual == "X" ? "O" : "X";
+    titlePlayerName.textContent = jugadorActual;
 
 }
 
@@ -184,38 +170,53 @@ function resetGame() {
 
 }
 
+function guardar() {
+    localStorage.setItem("millave", 2);
+    localStorage.setItem("millave2", 5);
+}
+
+function sacar() {
+    var cosa = localStorage.getItem("millave");
+    console.log(cosa);
+    var cosa2 = localStorage.getItem("millave2");
+    console.log(cosa2);
+}
+
+
+
+
 
 // 4. Lógica principal
-
-// 5. Eventos y manejo de interacciones
-// No se requieren eventos en este ejemplo
-
-
 
 for (let indiceListaBoton = 0; indiceListaBoton < listaEtiquetasBoton.length; indiceListaBoton++) {
     let boton = listaEtiquetasBoton[indiceListaBoton];
     boton.addEventListener("click", () => {
-        if (juegoTerminado) {
+        if (juegoTerminado || jugadorActual === "O") {
             return;
         }
         actualizarTablero(boton.id);
         boton.textContent = jugadorActual;
 
         jugadorActual = jugadorActual == "X" ? "O" : "X";
+        titlePlayerName.textContent = jugadorActual;
 
-        turnoComputadora();
+        setTimeout(turnoComputadora, 1000);
+
     })
 
 }
 
-document.getElementById("btnReset").addEventListener("click", resetGame);
+// 5. Eventos y manejo de interacciones
 
+
+
+
+const resetBtn = document.getElementById("btnReset")
+resetBtn.addEventListener("click", resetGame);
 // 6. Ejecución inicial (si es necesario)
-// No se requiere ejecución inicial
 
 
-
-
+// 7. Otros
 const button = document.querySelector('#button');
 const canvas = document.querySelector('#confetti');
 
@@ -234,4 +235,47 @@ function conffeti() {
 }
 
 
+
+// Modal
+
+const openModalBtn = document.getElementById('openModalBtn');
+const closeModalBtn = document.getElementById('closeModalBtn');
+const modal = document.getElementById('modal');
+
+
+const modalTitleHeading = document.getElementById('modalTitle');
+const modalParagraph = document.getElementById('modalMessage');
+
+
+function openModal(tittle, message) {
+    modal.setAttribute('data-visible', 'true');
+    modal.setAttribute('aria-hidden', 'false');
+
+    modalTitleHeading.textContent = tittle;
+    modalParagraph.textContent = message;
+
+    closeModalBtn.focus();
+}
+
+function closeModal() {
+    modal.setAttribute('data-visible', 'false');
+    modal.setAttribute('aria-hidden', 'true');
+    resetBtn.focus();
+}
+
+
+// openModalBtn.addEventListener('click', openModal);
+closeModalBtn.addEventListener('click', closeModal);
+
+
+const miProesa = fetch("http://localhost:3000/api/task");
+
+
+const miProesa2 = fetch("http://localhost:3000/api/task",
+    {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ task: "mi task2", check: false })
+    },
+
+);
 
