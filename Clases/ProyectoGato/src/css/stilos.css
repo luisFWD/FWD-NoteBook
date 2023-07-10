@@ -41,13 +41,11 @@ body {
   margin: 0 auto;
   background-color: aliceblue;
 }
-main {
-  /* transform: rotate(-5deg); */
-}
+
 .buttons-container {
   display: flex;
   flex-direction: column;
-
+  transform: rotate(-5deg);
   padding: 15px;
   gap: 15px;
 }
@@ -92,7 +90,13 @@ main {
   box-shadow: 2px 2px 10px #90e0ef;
 }
 
-#btnReset {
+.controls-container {
+  padding-top: 1em;
+  transform: rotate(3deg);
+}
+#button,
+#btnReset,
+#closeModalBtn {
   background-color: transparent;
   background-image: url("blob.svg");
   border: none;
@@ -117,4 +121,56 @@ main {
   -moz-box-shadow: 1px 1px 5px #333;
   /* height:200px;  */
   /* width:200px; */
+}
+
+.sticky-note {
+  height: 100px;
+  width: 100px;
+  transform: rotateX(-3deg);
+}
+.sharp-fold {
+  position: relative;
+  background: linear-gradient(-150deg, transparent 1.5em, #ffafcc 0);
+  border-radius: 0.5em;
+  transform: rotateX(-3deg);
+}
+
+.sharp-fold::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: linear-gradient(
+      to left bottom,
+      transparent 50%,
+      rgba(0, 0, 0, 0.2) 0,
+      rgba(0, 0, 0, 0.4)
+    )
+    no-repeat 100% 0;
+  width: 1.73em;
+  height: 3em;
+  transform: translateY(-1.3em) rotate(-30deg);
+  transform-origin: bottom right;
+  border-bottom-left-radius: inherit;
+  box-shadow: -0.2em 0.2em 0.3em -0.1em rgba(0, 0, 0, 0.15);
+}
+
+/* Modal style overwrites */
+#modal {
+  background-color: rgba(0, 0, 0, 0.01);
+}
+
+#modalContent {
+  background-color: transparent;
+}
+#modalTitle {
+  padding: 10px;
+  font-family: handdodle;
+}
+#modalMessage {
+  font-family: handdodle;
+}
+#closeModalBtn {
+  padding: 2.5em;
+  font-size: 0.8em;
 }
