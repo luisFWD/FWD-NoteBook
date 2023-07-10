@@ -1,5 +1,106 @@
+//import  { lo que quiero importar  }   from "de donde" "archivo"
+import { mensaje, decirHola, Persona, obtenerPokemon, obtenerPokemonForma2 } from './llamadasServidor.js';
+console.log("Mi mensaje", mensaje);
 
-//  COOOKIIIES
+decirHola("Profe");
+
+var miPersona = new Persona();
+console.log(miPersona.nombre);
+
+
+
+
+
+
+
+//   promesa
+var miRespuesta = obtenerPokemon("pikachu");
+
+
+
+
+
+
+
+
+
+//          then (yo puedo esperar a la llamada)
+miRespuesta.then(
+    (response) => {
+        console.log("Response", response);
+        return response.json();
+    }
+).then(
+    (data) => {
+        console.log(data);
+    }
+)
+
+
+
+// Segunda forma asyncronimo => sincronimo
+var miResultado = await obtenerPokemon("gengar");
+var datosGengar = await miResultado.json();
+console.log("esperando a Gengar: ", datosGengar);
+
+
+
+
+
+
+
+
+var miPOkemon = await obtenerPokemonForma2("pichu");
+console.log("mipokemon", miPOkemon)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 var listaTareasGlobal = [];
 
@@ -376,4 +477,4 @@ function leerCookie() {
 
 //optenerCookie();
 
-leerCookie();
+//leerCookie();
