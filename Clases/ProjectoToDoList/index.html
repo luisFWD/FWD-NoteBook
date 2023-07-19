@@ -56,6 +56,19 @@
               </button>
             </div>
             <div class="col-md-5">
+              <input
+                id="buscar-todo-input"
+                type="text"
+                placeholder="Buscar tarea"
+                class="form-control"
+                aria-describedby="add-todo-input-description"
+              />
+              <button id="buscar-todo-button" class="btn btn btn-primary">
+                BuscarTarea
+              </button>
+            </div>
+
+            <div class="col-md-5">
               <div class="row">
                 <div class="col">
                   <span>Tareas <br />Completadas</span>
@@ -71,6 +84,11 @@
             </div>
           </div>
           <!-- TODO Box -->
+          <form>
+            <button type="summit" class="addTaskButton" id="onclick">
+              Agregar<i class="bi bi-bell-fill"></i>
+            </button>
+          </form>
 
           <ul id="todo-container" class="row todo-container">
             <li id="notaNoTareas" class="emptyCard">

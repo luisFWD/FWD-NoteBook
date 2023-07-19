@@ -1,104 +1,38 @@
 //import  { lo que quiero importar  }   from "de donde" "archivo"
-import { mensaje, decirHola, Persona, obtenerPokemon, obtenerPokemonForma2 } from './llamadasServidor.js';
-console.log("Mi mensaje", mensaje);
-
-decirHola("Profe");
-
-var miPersona = new Persona();
-console.log(miPersona.nombre);
+import { obternerTareas, postTareas, marcarTarea, borrarTarea, buscarTareas } from './llamadasServidor.js';
 
 
+var listaTareasGlobal = [];
 
+async function crearTareasIniciales() {
 
+    listaTareasGlobal = await obternerTareas();
+    console.log("Mi lista al iniciar la aplicacion: ", listaTareasGlobal);
 
-
-
-//   promesa
-var miRespuesta = obtenerPokemon("pikachu");
-
-
-
-
-
-
-
-
-
-//          then (yo puedo esperar a la llamada)
-miRespuesta.then(
-    (response) => {
-        console.log("Response", response);
-        return response.json();
+    for (let indiceTarea = 0; indiceTarea < listaTareasGlobal.length; indiceTarea++) {
+        const tarea = listaTareasGlobal[indiceTarea];
+        const textoTarea = tarea.task;
+        //crear tarea es la funcioa\n de cada uno
+        addTodo(textoTarea, tarea.id, tarea.check);
     }
-).then(
-    (data) => {
-        console.log(data);
-    }
-)
+}
 
 
 
-// Segunda forma asyncronimo => sincronimo
-var miResultado = await obtenerPokemon("gengar");
-var datosGengar = await miResultado.json();
-console.log("esperando a Gengar: ", datosGengar);
+// var postTareasResultado = await postTareas("Sacar al gato");
+// console.log(" POST RESULTADO =", postTareasResultado);
+
+//var misTareas = await obternerTareas();
+//console.log("Mis tareas", misTareas)
 
 
+var resultadoMarcarTarea = await marcarTarea(true, "1df06b1c-fb0a-49dc-b335-c0c7f64a16e6")
+
+console.log(resultadoMarcarTarea)
 
 
-
-
-
-
-var miPOkemon = await obtenerPokemonForma2("pichu");
-console.log("mipokemon", miPOkemon)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// var resultadoEliminar = await borrarTarea("e905aa0d-a90d-43a0-b7aa-d327d09f3936");
+// console.log("Elimino", resultadoEliminar)
 
 
 
@@ -141,79 +75,10 @@ botonGetCookie.addEventListener("click", leerCookie);
 
 
 
-
-
-// function agregarTareaCookie(tarea) {
-
-//     listaTareasGlobal.push(tarea); //Agrega la tarea
-
-//     let listaTareasGlobalCadenaTexto = JSON.stringify(listaTareasGlobal);
-//     document.cookie = "listaTareas=" + listaTareasGlobalCadenaTexto;
-
-// }
-
-// function eliminarTareaCookie(tarea) {
-
-//     //1 buscar la tarea en la lista
-//     let indiceTarea = listaTareasGlobal.findIndex(algunaTarea =>
-//         algunaTarea.toUpperCase() == tarea.toUpperCase());
-
-//     // findIndex retorna -1 si no la encuentra y un numero con el indice si lo encuentra
-//     if (indiceTarea >= 0) {
-
-//         listaTareasGlobal.splice(indiceTarea, 1); //elimina la tarea de la lista
-
-//         let listaTareasGlobalCadenaTexto = JSON.stringify(listaTareasGlobal);
-//         document.cookie = "listaTareas=" + listaTareasGlobalCadenaTexto;
-//     }
-// }
-
-
-// function optenerCookie() {
-
-//     let galleta = document.cookie;
-
-//     let galletaDividida = galleta.split("=");
-
-//     alert();
-
-
-//     if (galletaDividida.length > 0 && galletaDividida[1]) {
-//         let jsLista = JSON.parse(galletaDividida[1])
-
-//         listaTareasGlobal = jsLista;
-
-//         //solo luis
-//         todoList = listaTareasGlobal;
-//         paintTodos();
-//         //solo luis
-
-//         //for( let indice = 0  ; indice < jsLista.length ; indice ++ ){
-//         //    agregarTarea(jsLista[indice]);
-//         //}
-
-//         alert(jsLista[1]);
-
-//     }
-// }
-
-
-//agregarTareaCookie("tarea1");
-
-//optenerCookie();
-
-
-
-
-
-
-
-
-
-
-
-//// FIN COOKIES 
-
+function name() {
+    console.log("Hola")
+}
+document.getElementById("onclick").addEventListener("click", name)
 
 
 
@@ -276,6 +141,9 @@ function checkTodo(event) {
         counter = counter - 1;
     }
 
+
+    marcarTarea(isChecked, event.target.id)
+
     // <div id="#"> <div> <input> </div> </div>
     const parent = event.target.parentElement.parentElement;
     const parentId = parent.id;
@@ -324,7 +192,7 @@ function deleteTodo(id) {
 
 
 
-function createTodoElement(todoItem) {
+function createTodoElement(todoItem, idTarea, checkTarea) {
     var newTodoItem = document.createElement("li");
     newTodoItem.classList.add("todo-item");
     newTodoItem.setAttribute("id", todoItem.id);
@@ -343,6 +211,9 @@ function createTodoElement(todoItem) {
     todoLabel.textContent = "Marcar la tarea como completada";
     // todo checkbox
     let todoCheckbox = document.createElement("input");
+    todoCheckbox.id = idTarea;
+    todoCheckbox.checked = checkTarea;
+
     todoCheckbox.setAttribute("type", "checkbox");
     todoCheckbox.setAttribute("aria-describedby", `${todoItem.id}-aria-label`);
     todoCheckbox.classList.add("form-check-input", "todo-item-check");
@@ -362,9 +233,16 @@ function createTodoElement(todoItem) {
     todoDeleteButton.classList.add("delete-button");
     todoDeleteButton.setAttribute("aria-label", 'Eliminar');
 
-    todoDeleteButton.addEventListener("click", function () {
+    todoDeleteButton.addEventListener("click", (e) => {
+
         deleteTodo(todoItem.id);
+        borrarTarea(idTarea);//servidor eliminar
+
     });
+
+    //Swal.fire
+
+
     //icono eliminar
     let todoDeleteIcon = document.createElement("i"); //<i></i>
     todoDeleteIcon.classList.add("bi", "bi-trash-fill");
@@ -389,13 +267,13 @@ function paintTodos() {
     countTareas();
 }
 
-
-function vericarCampoTexto() {
+//addTareasEvento
+async function addTareasEvento() {
     //Optener texto usuario
-    var addTodoInputValue = addTodoInput.value;
+    var textoTarea = addTodoInput.value;
 
     //Validar que la tarea tiene texto
-    if (!addTodoInputValue && addTodoInputValue.length < 1) {
+    if (!textoTarea && textoTarea.length < 1) {
         alert("No hay valores que ingresar");
         return;
     }
@@ -403,7 +281,7 @@ function vericarCampoTexto() {
 
     //Validar que no hay repetidos
     var existSimilarTodo =
-        todoList.findIndex(todo => todo.todoText == addTodoInputValue);
+        todoList.findIndex(todo => todo.todoText == textoTarea);
 
 
     if (existSimilarTodo >= 0) {
@@ -411,14 +289,25 @@ function vericarCampoTexto() {
         return;
     }
     //Fin de Validar que no hay repetidos
-    addTodo(addTodoInputValue)
+
+    //post
+
+    var respuetaAgregar = await postTareas(textoTarea)
+    listaTareasGlobal = [...respuetaAgregar]
+    var ultimaTarea = respuetaAgregar.pop()
+
+    const idTarea = ultimaTarea.id;
+    const checkTarea = ultimaTarea.check;
+
+    addTodo(textoTarea, idTarea, checkTarea)
 
 
 }
 
 
 
-function addTodo(tareaPorAgregar) {
+
+function addTodo(tareaPorAgregar, idTarea, checkTarea) {
 
 
     var newTodoItem = {
@@ -427,7 +316,7 @@ function addTodo(tareaPorAgregar) {
     }
 
     todoList.push(newTodoItem);
-    todoContainer.appendChild(createTodoElement(newTodoItem));
+    todoContainer.appendChild(createTodoElement(newTodoItem, idTarea, checkTarea));
 
     //Limpia el texto del input
     addTodoInput.value = "";
@@ -438,13 +327,10 @@ function addTodo(tareaPorAgregar) {
 
 
 
-addTodoButton.addEventListener("click", vericarCampoTexto);
+addTodoButton.addEventListener("click", addTareasEvento);
 
 paintTodos();
 countTareas();
-
-
-
 
 
 
@@ -478,3 +364,36 @@ function leerCookie() {
 //optenerCookie();
 
 //leerCookie();
+
+
+var botonBuscar = document.getElementById("buscar-todo-button");
+var inputBuscar = document.getElementById("buscar-todo-input");
+
+botonBuscar.addEventListener("click", async function (eventoLuis) {
+    eventoLuis.preventDefault();
+
+    todoContainer.innerHTML = "";
+    counter = 0;
+
+    //CREAR TAREAS INICIALES
+
+    listaTareasGlobal = await buscarTareas(inputBuscar.value);
+    console.log("Mi lista al iniciar la aplicacion: ", listaTareasGlobal);
+
+    for (let indiceTarea = 0; indiceTarea < listaTareasGlobal.length; indiceTarea++) {
+        const tarea = listaTareasGlobal[indiceTarea];
+        const textoTarea = tarea.task;
+        //crear tarea es la funcioa\n de cada uno
+        addTodo(textoTarea, tarea.id, tarea.check);
+
+    }
+
+
+    console.log("ID", optenerId)
+
+
+
+
+})
+
+

@@ -1,0 +1,27 @@
+.btn-sombrero {
+  background-color: teal;
+  color: white;
+  padding: 15px 20px 15px 20px;
+
+  font-size: 20px;
+  border-radius: 20px;
+  position: relative;
+
+  margin-top: 20px;
+}
+
+.btn-sombrero img {
+  display: none;
+  width: 30px;
+  position: absolute;
+  top: 8px;
+  right: 50px;
+}
+
+.btn-sombrero:hover img {
+  display: block;
+}
+.btn-sombrero:hover {
+  color: teal;
+  background-color: white;
+}
