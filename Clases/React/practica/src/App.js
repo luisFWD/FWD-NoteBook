@@ -1,66 +1,54 @@
-import logo from './logo.svg';
+
 import './App.css';
-import ImagenOrnitorinco from './components/ImagenOrnitorinco/ImagenOrnitorinco'
-import Titulo from './components/Titulo/Titulo';
-import Boton from './components/Boton/Boton';
+
 import { useState } from 'react';
-import ElementoLista from './components/ElementoLista/ElementoLista';
+
 import Menu from './components/Menu/Menu';
 
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+import Login from './pages/Login/Login';
+import Practica from './pages/Practica/Practica';
 
 function App() {
 
-  const inventos = [
-    "Magneto Gigante",
-    "Destructinador",
-    "Edificio Robot Gigante",
-    "Desinfla-inador",
-    "Acelerador de edad y tiempo (Age Accelerator-inator)",
-    "Hipnotizador (The Slave-inator)",
-    "Drill-inator",
-    "Plans for magnet",
-    "Desinteti-vaporizador",
-    "Copy and Paste-inator",
-    "Termite Controlling Helmet",
-    "Melt-inator 6-5000-inator",
-  ];
+  const router = createBrowserRouter([
 
+    {
+      path: "/",
+      element: <Login></Login>
 
-  //usamos el "hook" de useState
-  const [tieneSombrero, setTieneSombrero] = useState(false);
-  const [textoBoton, setTextoBoton] = useState("Poner Sombrero");
+    },
+    {
+      path: "/practica",
+      element: <Practica></Practica>
+    }
+
+  ])
 
 
 
-  function ponerSombrero() {
-    setTieneSombrero(!tieneSombrero);
+  const [session, setSession] = useState(false);
+  const [textoSesion, setTextoSesion] = useState("Iniciar");
 
-    if (!tieneSombrero === true) {
-      setTextoBoton("Quitar Sombrero")
+  function iniciarSesion() {
+    setSession(!session);
+
+    if (!session === true) {
+      setTextoSesion("Cerrar")
     }
     else {
-      setTextoBoton("Poner Sombrero")
+      setTextoSesion("Iniciar")
     }
   }
+
+
   return (
     <div className="App">
       <header className="App-header">
+        <Menu onClick={iniciarSesion} texto={textoSesion}></Menu>
 
-        <Menu></Menu>
-
-        <Titulo tieneSombrero={tieneSombrero} >
-          <ImagenOrnitorinco tieneSombrero={tieneSombrero}></ImagenOrnitorinco>
-        </Titulo>
-
-        <Boton onClick={ponerSombrero} nombreBoton={textoBoton} ></Boton>
-
-        <img src='/Doof.png' alt='An evil Inventor'></img>
-        <ul>
-          {inventos.map((elemento, indice) => (
-            <ElementoLista texto={elemento} key={indice}  ></ElementoLista>
-          ))}
-        </ul>
-
+        <RouterProvider router={router}  ></RouterProvider >
 
       </header>
     </div>
