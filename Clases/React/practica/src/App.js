@@ -1,16 +1,19 @@
 
 import './App.css';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Menu from './components/Menu/Menu';
 
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, BrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Login from './pages/Login/Login';
 import Practica from './pages/Practica/Practica';
+import MenuComidas from './pages/MenuComidas/MenuComidas';
+import NotFound from './pages/NotFound/NotFound';
 
 function App() {
+
 
   const router = createBrowserRouter([
 
@@ -22,6 +25,14 @@ function App() {
     {
       path: "/practica",
       element: <Practica></Practica>
+    },
+    {
+      path: "/menu",
+      element: <MenuComidas></MenuComidas>
+    },
+    {
+      path: '*',
+      element: <NotFound />
     }
 
   ])
@@ -43,12 +54,16 @@ function App() {
   }
 
 
+
+
   return (
     <div className="App">
       <header className="App-header">
+
         <Menu onClick={iniciarSesion} texto={textoSesion}></Menu>
 
-        <RouterProvider router={router}  ></RouterProvider >
+        <RouterProvider router={router}></RouterProvider >
+
 
       </header>
     </div>

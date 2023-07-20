@@ -1,0 +1,17 @@
+@font-face {
+  font-family: Burger;
+  src: url("../../../public/BurgerNation.otf");
+}
+
+.menu-title {
+  font-family: Burger;
+}
+
+.contenedor-comidas {
+  margin-top: 80px;
+  max-width: 500px;
+}
+
+.li-platillo {
+  list-style: none;
+}
