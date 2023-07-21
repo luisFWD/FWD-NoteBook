@@ -3,12 +3,12 @@ import Comida from "../../components/Comida/Comida";
 import "./MenuComidas.css";
 import { useState, useEffect } from "react";
 import { getComidas } from "../../api/apiComidas";
-
+import Menu from "../../components/Menu/Menu";
 function MenuComidas() {
   const [listaComidas, setListaComidas] = useState([]);
 
-  async function cargarComidas() {
-    let resultadoComidas = await getComidas();
+  async function cargarComidas(letra = "a") {
+    let resultadoComidas = await getComidas(letra);
     console.log(resultadoComidas);
     setListaComidas(resultadoComidas.meals);
     //
@@ -20,6 +20,7 @@ function MenuComidas() {
 
   return (
     <div className="contenedor-comidas">
+      <Menu searchFood={cargarComidas}></Menu>
       <h1 className="menu-title">Menu + </h1>
       <div className="row"></div>
       <ul>

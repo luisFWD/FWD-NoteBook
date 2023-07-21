@@ -1,10 +1,10 @@
 
 const urlApiComidas = "https://www.themealdb.com/api/json/v1/1/search.php?f="
 
-export async function getComidas() {
+export async function getComidas(letra) {
     // intento obtener las comidas del api y..
     try {
-        const promesaApiComidas = await fetch(urlApiComidas + "a")
+        const promesaApiComidas = await fetch(urlApiComidas + letra)
         const datos = await promesaApiComidas.json();
         return datos;
     }

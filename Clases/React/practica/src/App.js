@@ -1,7 +1,7 @@
 
 import './App.css';
 
-import { useState, useEffect } from 'react';
+
 
 import Menu from './components/Menu/Menu';
 
@@ -13,6 +13,9 @@ import MenuComidas from './pages/MenuComidas/MenuComidas';
 import NotFound from './pages/NotFound/NotFound';
 
 function App() {
+
+
+
 
 
   const router = createBrowserRouter([
@@ -39,28 +42,12 @@ function App() {
 
 
 
-  const [session, setSession] = useState(false);
-  const [textoSesion, setTextoSesion] = useState("Iniciar");
-
-  function iniciarSesion() {
-    setSession(!session);
-
-    if (!session === true) {
-      setTextoSesion("Cerrar")
-    }
-    else {
-      setTextoSesion("Iniciar")
-    }
-  }
-
-
-
 
   return (
     <div className="App">
       <header className="App-header">
 
-        <Menu onClick={iniciarSesion} texto={textoSesion}></Menu>
+
 
         <RouterProvider router={router}></RouterProvider >
 
