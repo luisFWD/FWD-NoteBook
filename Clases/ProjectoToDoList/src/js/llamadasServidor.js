@@ -151,8 +151,6 @@ export async function buscarTareas(textoBuscar) {
 
 
 
-//============================ POST
-//============================ PUT
-//============================ DELETE
+
 
 

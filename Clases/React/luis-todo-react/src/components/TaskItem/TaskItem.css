@@ -1,0 +1,54 @@
+.task-item {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: space-between;
+
+  min-width: 200px;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 2px 3px 10px grey;
+
+  overflow: hidden;
+  position: relative;
+  padding: 10px;
+}
+
+.task-item p {
+  flex: 1;
+  font-size: 1.5em;
+  color: chocolate;
+}
+
+.task-check input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.task-check .checkmark {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.task-check input[type="checkbox"]:checked + .checkmark {
+  background-color: black;
+}
+
+.label-text {
+  position: absolute;
+  left: -9999px;
+}
+
+.task-delete {
+  border: none;
+  background-color: red;
+  color: white;
+  border-radius: 20px;
+  height: fit-content;
+}

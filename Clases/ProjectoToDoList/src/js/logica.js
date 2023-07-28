@@ -1,5 +1,5 @@
 //import  { lo que quiero importar  }   from "de donde" "archivo"
-import { obternerTareas, postTareas, marcarTarea, borrarTarea, buscarTareas } from './llamadasServidor.js';
+import { obternerTareas, postTareas, marcarTarea, borrarTarea, buscarTareas } from './locarServer.js';
 
 
 var listaTareasGlobal = [];
@@ -26,9 +26,7 @@ async function crearTareasIniciales() {
 //console.log("Mis tareas", misTareas)
 
 
-var resultadoMarcarTarea = await marcarTarea(true, "1df06b1c-fb0a-49dc-b335-c0c7f64a16e6")
 
-console.log(resultadoMarcarTarea)
 
 
 // var resultadoEliminar = await borrarTarea("e905aa0d-a90d-43a0-b7aa-d327d09f3936");
@@ -47,31 +45,15 @@ var todoList = [
 ];
 
 
-var miListaDeTareas = ["Tarea 1", "Tarea 2", "Tarea 3  que nunca hago"];
 
 //  document.cookie
 
-function crearCookie() {
-
-    //JSON
-    let tareasEnTexto = JSON.stringify(miListaDeTareas);
-    console.log("mi lista ahora es ", tareasEnTexto);
-
-    document.cookie = "millave=" + tareasEnTexto;
-    // `${}`
-
-}
 
 
 
 
-const botonSetearCookie = document.getElementById("setbtn");
 
-const botonGetCookie = document.getElementById("getbtn");
 
-botonSetearCookie.addEventListener("click", crearCookie);
-
-botonGetCookie.addEventListener("click", leerCookie);
 
 
 
@@ -389,11 +371,10 @@ botonBuscar.addEventListener("click", async function (eventoLuis) {
     }
 
 
-    console.log("ID", optenerId)
-
 
 
 
 })
 
 
+crearTareasIniciales()
