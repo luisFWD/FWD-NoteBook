@@ -1,44 +1,44 @@
 
 import './App.css';
+import Login from './pages/Login/Login';
+import SignUp from './pages/SignUp/SignUp';
 import ToDoApp from './pages/ToDoApp/ToDoApp';
-import NotFound from './pages/NotFound/NotFound';
+
+
+//Importar los recursos de React Router Dom
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 
 function App() {
 
-
+  // Crear las rutas de mi pagina
   const router = createBrowserRouter([
-
     {
       path: "/",
+      element: <Login></Login>
+    },
+    {
+      path: "/login",
+      element: <Login></Login>
+    },
+    {
+      path: "/signup",
+      element: <SignUp></SignUp>
+    },
+    {
+      path: "/tareas",
       element: <ToDoApp></ToDoApp>
-
     },
-    {
-      path: "/user",
-      element: <ToDoApp></ToDoApp>,
-      children: [
-        {
-          path: "/user/luis",
-          element: <ToDoApp></ToDoApp>
-
-        }
-      ]
-
-    },
-
-
-    {
-      path: '*',
-      element: <NotFound />
-    }
 
   ])
 
   return (
     <div className="App">
-
+      {/* Utilizar el Router Provider */}
       <RouterProvider router={router}></RouterProvider >
+
+
+
 
 
 
