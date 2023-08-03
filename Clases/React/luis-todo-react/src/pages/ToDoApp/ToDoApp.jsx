@@ -3,6 +3,7 @@ import "./ToDoApp.css";
 import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TaskItem from "../../components/TaskItem/TaskItem";
+import { useNavigate } from "react-router-dom";
 
 export default function ToDoApp() {
   function getLocalStorage() {
@@ -12,8 +13,10 @@ export default function ToDoApp() {
     return listaConvertida;
   }
 
-  const [listaTareas, setListaTareas] = useState(getLocalStorage() ?? []);
+  const [listaTareas, setListaTareas] = useState([]);
   const [inputValue, setInputValue] = useState("");
+
+  const navigate = useNavigate();
 
   function saveLocalStorage() {
     // localStorage.setItem
@@ -21,26 +24,52 @@ export default function ToDoApp() {
   }
 
   //Es un hook para detectar cuando algo cambia
-  useEffect(() => {
-    saveLocalStorage();
-  }, [listaTareas]);
+  // useEffect(() => {
+  //   saveLocalStorage();
+  // }, [listaTareas]);
 
   //Escuchar por primera vez la pagina cargar
   // useEffect(() => {
   //   getLocalStorage();
   // }, []);
-
+ function actualizarTareasConUsuario(listaNueva) {
+  const usuario = sessionStorage.getItem("sesion");
+    const usuarioData = JSON.parse(usuario);
+    if (usuarioData) {
+      localStorage.setItem(
+        "listaTareas" + usuarioData.name.trim(),
+        JSON.stringify(listaNueva)
+      );
+    }
+ }
   //agregar
   function agregarTareas() {
     let listaNueva = [...listaTareas]; //copiar lista tareas
     listaNueva.push({
-      id: uuidv4(), // QUITAR EL NEW
+      id: uuidv4(), 
       texto: inputValue,
       check: false,
     });
     setListaTareas(listaNueva);
     console.log(listaNueva);
+
+    actualizarTareasConUsuario(listaNueva);
   }
+
+  useEffect(() => {
+    const usuario = sessionStorage.getItem("sesion");
+    const usuarioData = JSON.parse(usuario);
+
+    if (usuarioData) {
+      const tareasUsuario = localStorage.getItem(
+        "listaTareas" + usuarioData.name.trim()
+      );
+      const tareasUsuarioObj = JSON.parse(tareasUsuario) ?? [];
+      setListaTareas(tareasUsuarioObj);
+    } else {
+      navigate("/login");
+    }
+  }, []);
 
   function inputChange(event) {
     setInputValue(event.target.value);
@@ -50,10 +79,15 @@ export default function ToDoApp() {
     let listaNueva = [...listaTareas]; //copiar lista tareas
     //// eliminar la tarea de la lista nueva for if
     setListaTareas(listaNueva);
+
+    actualizarTareasConUsuario(listaNueva);
     console.log(listaNueva);
   }
 
-  function checarTarea() {}
+  function checarTarea() {
+    let listaNueva = [...listaTareas]; //copiar lista tareas
+    actualizarTareasConUsuario(listaNueva);
+  }
 
   return (
     <div>

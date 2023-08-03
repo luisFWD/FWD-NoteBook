@@ -1,46 +1,48 @@
-
-import './App.css';
-import Login from './pages/Login/Login';
-import SignUp from './pages/SignUp/SignUp';
-import ToDoApp from './pages/ToDoApp/ToDoApp';
-
+import "./App.css";
+import Login from "./pages/Login/Login";
+import SignUp from "./pages/SignUp/SignUp";
+import ToDoApp from "./pages/ToDoApp/ToDoApp";
 
 //Importar los recursos de React Router Dom
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
-
   // Crear las rutas de mi pagina
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Login></Login>
+      element: <Login></Login>,
     },
     {
       path: "/login",
-      element: <Login></Login>
+      element: <Login></Login>,
     },
     {
       path: "/signup",
-      element: <SignUp></SignUp>
+      element: <SignUp></SignUp>,
     },
     {
-      path: "/tareas",
-      element: <ToDoApp></ToDoApp>
+      path: "/tareas/:nombre",
+      element: <ToDoApp></ToDoApp>,
     },
+  ]);
 
-  ])
+  const autos = [
+    { marca: "Toyota", color: "Rojo", emoji: "🚗" },
+    { marca: "Ford", color: "Azul", emoji: "🚕" },
+    { marca: "Honda", color: "Verde", emoji: "🚙" },
+    { marca: "Chevrolet", color: "Negro", emoji: "🚐" },
+    { marca: "Volkswagen", color: "Blanco", emoji: "🚚" },
+  ];
 
   return (
     <div className="App">
       {/* Utilizar el Router Provider */}
-      <RouterProvider router={router}></RouterProvider >
+      <RouterProvider router={router}></RouterProvider>
 
-
-
-
-
+      {autos.map((auto) => (
+        <li>{auto.emoji} </li>
+      ))}
 
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -56,7 +58,6 @@ function App() {
           Learn React
         </a>
       </header> */}
-
     </div>
   );
 }
