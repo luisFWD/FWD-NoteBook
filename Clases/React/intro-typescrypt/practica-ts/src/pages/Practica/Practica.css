@@ -1,0 +1,32 @@
+.topic_container {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.topic {
+  background-color: #b8c0ff;
+}
+
+.topic_title {
+  font-weight: bold;
+  color: rgb(#03045e);
+}
+
+.topic-list {
+  background-color: #b8c0ff;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.topic-list li {
+  padding: 2px;
+  margin-bottom: 2px;
+  border-radius: 2px;
+  width: fit-content;
+  list-style: none;
+  background-color: #bbd0ff;
+}

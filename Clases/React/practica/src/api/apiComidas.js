@@ -10,6 +10,7 @@ export async function getComidas(letra) {
     }
     // si algo sale mal ejecuta el catch
     catch (error) {
-        console.error("Error al optener comidas:", error);
+        console.log("Error al optener comidas:", error);
+        return { meals: [], error: error }
     }
 }

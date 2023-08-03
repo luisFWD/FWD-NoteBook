@@ -11,8 +11,20 @@ import Login from './pages/Login/Login';
 import Practica from './pages/Practica/Practica';
 import MenuComidas from './pages/MenuComidas/MenuComidas';
 import NotFound from './pages/NotFound/NotFound';
-
+import { useState } from 'react';
 function App() {
+
+  const [lista, setLista] = useState([]);
+
+  function agregar() {
+    lista.push({
+      id: "id" + new Date().getTime(),
+      parrafo: "",
+      check: false
+    })
+    setLista(lista)
+    console.log("lista", lista)
+  }
 
 
 
@@ -47,6 +59,9 @@ function App() {
     <div className="App">
       <header className="App-header">
 
+        <button onClick={agregar}>
+
+        </button>
 
 
         <RouterProvider router={router}></RouterProvider >

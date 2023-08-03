@@ -1,0 +1,13 @@
+.contenedorTareas {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 50px;
+}
+
+.add-btn {
+}
+
+.add-input {
+}
