@@ -1,0 +1,120 @@
+.mi-list {
+  list-style: none;
+}
+
+tr,
+td,
+th {
+  border: solid 1px black;
+}
+
+/* Selecciono el elemento por su id con el #   */
+#cajaId {
+  background-color: antiquewhite;
+}
+/* Selecciono el elemento por su clase con el . punto*/
+.claseCaja {
+  color: black;
+}
+
+h1 {
+  /* le aplico este estilo a todos los h1 de la pagina */
+  color: red;
+}
+
+/* Spesificidad = que tan espesifico es un estilo*/
+/* El id es mas espesifico que la clase */
+/* los estilos en html son mas espesificos que los id */
+
+/* html > id > class > tipo h1 */
+
+.papa {
+  height: 100px;
+  width: 100px;
+  background-color: blue;
+  padding: 10px;
+}
+/* con la boquita yo selecciono los hijos */
+.papa > div {
+  height: 50px;
+  width: 100px;
+  background-color: orange;
+}
+
+.papa:hover {
+  background-color: orange;
+}
+
+.etiquetaA {
+  width: fit-content;
+  background-color: violet;
+}
+/* el before y after angregan una etiqueta "virtual" antes y despues de la caja */
+.etiquetaA::before {
+  content: "antes";
+  background-color: red;
+}
+.etiquetaA::after {
+  content: "despues";
+  background-color: blue;
+}
+
+.cajaA,
+.cajaB {
+  background-color: blue;
+}
+
+.caja-container {
+  padding: 5px;
+  display: flex;
+  flex-direction: column; /*row o column*/
+
+  /* Centra los elementos de manera horizontal */
+  justify-content: center;
+
+  /* Centra los elementos de manera vertical */
+  align-items: center;
+}
+
+.caja-A,
+.caja-B {
+  height: 100px;
+  width: 100px;
+}
+
+.caja-A {
+  background-color: blue;
+}
+.caja-B {
+  background-color: red;
+}
+
+@media (min-width: 365px) {
+  .caja-container {
+    background-color: green;
+  }
+}
+
+@media (min-width: 720px) {
+  .caja-container {
+    background-color: blue;
+  }
+}
+
+@media (min-width: 1220px) {
+  .caja-container {
+    background-color: orange;
+  }
+}
+
+.caja-container-grid {
+  display: grid;
+  /*grid-template-columns: 200px 200px 200px;   3 columnas de 200px cada una */
+  /*grid-template-columns: repeat(3, 1fr);   fr = fraccion */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-rows: repeat(3, 200px);
+}
+
+.caja-g {
+  border: solid 1px red;
+}
