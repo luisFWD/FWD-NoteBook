@@ -118,3 +118,9 @@ h1 {
 .caja-g {
   border: solid 1px red;
 }
+
+.bg-poke {
+  height: 200px;
+  width: 200px;
+  background-image: url("../../../public/Fondo_Pokédex_Bel.png");
+}

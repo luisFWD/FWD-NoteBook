@@ -4,7 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 import { getBayas } from "../../api/pokeapi";
 
+function loadPokemonData(params: any) {}
+let pokeid = 0;
+
 function Repaso() {
+  useEffect(() => {
+    loadPokemonData(pokeid);
+  }, [pokeid]);
+
   // Hook son funciones de react para hacer diversas
   // "use"
 
@@ -285,6 +292,8 @@ function Repaso() {
         <div className="caja-g">F</div>
         <div className="caja-g">G</div>
       </div>
+
+      <div className="bg-poke">l</div>
     </div>
   );
 }
