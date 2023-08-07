@@ -6,7 +6,7 @@ interface CarProps {
   fabricacion: number;
   deportivo: boolean;
 }
-
+//          Destructuring
 function Car({ nombre, fabricacion, deportivo }: CarProps) {
   return (
     <div className="card-automovil">

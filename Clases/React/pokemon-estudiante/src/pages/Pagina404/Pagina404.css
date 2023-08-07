@@ -1,0 +1,50 @@
+@font-face {
+  font-family: pokemon-letters;
+  src: url("../../../public/Ketchum.otf");
+}
+
+.page404__container {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page404__message-box {
+  display: flex;
+  flex-direction: column;
+  max-width: 40%;
+}
+
+.page404__message-title {
+  font-size: 4rem;
+  font-family: pokemon-letters;
+
+  background-image: url("../../../public/psyduckBG.png");
+  background-clip: text;
+  -webkit-background-clip: text; /* For Safari/WebKit browsers */
+  color: transparent;
+  animation: animate 15s linear infinite;
+}
+
+.page404__message-link {
+  font-size: auto;
+  font-weight: bold;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .page404__message-title {
+    font-size: 10rem;
+  }
+}
