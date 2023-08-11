@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./PaginaDetalles.css";
 import { useNavigate, Link, useParams } from "react-router-dom";
-import { getPokemon } from "../../api/pokeapi";
+import { getEvolutionChain, getPokemon } from "../../api/pokeapi";
 import { getTypeColor } from "../../utils/pokemonTypeColor";
 
 function PaginaDetalles() {
@@ -34,6 +34,7 @@ function PaginaDetalles() {
 
   useEffect(() => {
     getDetails();
+    getEvolutionChain(id);
   }, [id]);
   return (
     <div className="details-page__container">
