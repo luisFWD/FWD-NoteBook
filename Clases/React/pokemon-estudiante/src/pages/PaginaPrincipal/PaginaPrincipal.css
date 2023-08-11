@@ -5,3 +5,22 @@
   gap: 20px;
   padding: 0;
 }
+
+.ttitle {
+  background-image: url("../../../public/pokedex_bg.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  font-size: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .ttitle {
+    background-size: contain;
+    font-size: 1rem;
+    padding-top: 20px;
+    padding-bottom: 33px;
+  }
+}
