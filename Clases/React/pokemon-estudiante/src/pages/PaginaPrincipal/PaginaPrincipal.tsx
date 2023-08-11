@@ -65,11 +65,14 @@ function PaginaPrincipal() {
 
   return (
     <div>
-      <h1>pagina principal</h1>
+      <div className="ttitle">
+        <h1>pagina principal</h1>
+      </div>
 
       <ul className="pokemon-list__container">
         {listPokemonData.map((pokemon, indice) => (
           <CartaPokemon
+            funcionClick={irDetalles}
             img={pokemon.sprites.front_default}
             key={indice}
             name={pokemon.name}

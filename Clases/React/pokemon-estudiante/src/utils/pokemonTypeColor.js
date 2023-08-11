@@ -22,3 +22,15 @@ export const pokemonTypeColors = {
 export function getTypeColor(typeName) {
     return pokemonTypeColors[typeName];
 }
+
+
+
+
+export const bgs = {
+    normal: "/BW_Hilbert_Back.png",
+
+};
+
+export function getBgs(bg) {
+    return bgs[bg];
+}

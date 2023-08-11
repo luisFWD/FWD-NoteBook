@@ -1,0 +1,214 @@
+@font-face {
+  font-family: pokeLetter;
+  src: url("../../../public/Ketchum.otf");
+}
+
+.details-page__container {
+  min-height: 100vh;
+  min-width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-pokemon__card {
+  width: 90%;
+  max-width: 1070px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background: rgba(255, 255, 255, 0.25);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(149, 232, 255, 1) 53%,
+    rgba(51, 129, 255, 1) 100%
+  ); */
+
+  background-image: url("../../../public/trainer_battles_arena.jpeg");
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 20px;
+  background-position: left;
+}
+
+@media (min-width: 768px) {
+  .details-pokemon__card {
+    width: 80%;
+  }
+}
+
+.details-pokemon__title {
+  font-family: pokeLetter;
+}
+
+.life_container {
+  width: 50%;
+  background-color: black;
+  border-radius: 0 50px 50px 0;
+  color: white;
+  padding: 0px 50px 10px 25px;
+  font-size: 10px;
+  position: relative;
+}
+@media screen and (min-width: 675px) {
+  .life_container {
+    font-size: 16px;
+  }
+}
+
+.pokemon-info_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.pokemon-name_container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+}
+.pokemon-name {
+  font-size: 1.5em;
+  margin: 0px;
+}
+
+.pokemon-gender {
+  background-color: pink;
+  border-radius: 50%;
+  height: 1.5em;
+  width: 1.5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-level {
+  margin: 0px;
+  font-size: 2em;
+}
+
+.pokemon-exp,
+.pokemon-help {
+  margin: 0;
+  padding: 5px 0px;
+  text-align: left;
+  flex: 1;
+}
+.pokemon-bars {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.pokemon-help {
+  border-top: 7px solid #78c850;
+}
+
+.pokemon-exp {
+  border-bottom: 5px solid gray;
+  margin-left: 2em;
+  display: none;
+}
+@media screen and (min-width: 675px) {
+  .pokemon-exp {
+    display: block;
+  }
+}
+
+.pokemon-types {
+  list-style: none;
+  position: absolute;
+  bottom: -10px;
+  right: 50px;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+.pokemon-types > li {
+  min-width: 5em;
+  border-radius: 10px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 2px;
+  font-size: 1em;
+}
+
+.evolutions-container {
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+  height: 5em;
+
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media screen and (min-width: 675px) {
+  .evolutions-container {
+    font-size: 16px;
+  }
+}
+
+.pokemon-evolution {
+  width: 50px;
+  background-color: gray;
+  border-radius: 50%;
+}
+
+.evolutions-container__list {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.evolutions-container__list li {
+}
+
+.evolutions-title {
+  width: 100%;
+  margin: 0;
+  padding: 0px;
+  margin-top: 15px;
+  text-align: right;
+}
+
+/* https://archives.bulbagarden.net/wiki/Category:Trainer_back_sprites */
+
+.trainer-img,
+.pokemon-img {
+  bottom: 0;
+  left: 0;
+
+  width: 30%;
+  aspect-ratio: 1/1.5;
+  max-width: 200px;
+}
+.pokemon-img {
+  align-self: end;
+}
+.trainer-img {
+  align-self: end;
+}
+
+.trainer-container {
+  display: flex;
+  /* flex: 1; */
+  bottom: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+}
