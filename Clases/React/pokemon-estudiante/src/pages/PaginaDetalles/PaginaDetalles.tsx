@@ -19,22 +19,12 @@ function PaginaDetalles() {
     const pokemonData = await getPokemon(id);
     setPokemonDetails(pokemonData);
 
-    //erase
-    setPokemonEvolutions([
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-    ]);
+    const pokemonEvolutionsData = await getEvolutionChain(id);
+    setPokemonEvolutions(pokemonEvolutionsData);
   }
 
   useEffect(() => {
     getDetails();
-    getEvolutionChain(id);
   }, [id]);
   return (
     <div className="details-page__container">

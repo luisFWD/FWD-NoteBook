@@ -77,14 +77,18 @@ export async function getEvolutionChain(pokemonId) {
 
         //Get the images
         var evolutionListData = [];
-        evolutionList.forEach(async (evolution) => {
+
+        for (let index = 0; index < evolutionList.length; index++) {
+            const evolution = evolutionList[index];
             const requestPokemon = await fetch("https://pokeapi.co/api/v2/pokemon/" + evolution);
             const evolutionData = await requestPokemon.json();
             evolutionListData.push(evolutionData);
-        });
+        }
+
+
         console.log("Data Evoluciones", evolutionListData)
 
-        return pokemonData;
+        return evolutionListData;
 
     } catch (error) { //Se ejecuta si hubo algun error
         console.error("Hubo un error al llamar al api")
