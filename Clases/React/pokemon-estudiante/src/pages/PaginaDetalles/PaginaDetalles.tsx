@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./PaginaDetalles.css";
 import { useNavigate, Link, useParams } from "react-router-dom";
-import { getPokemon } from "../../api/pokeapi";
+import { getEvolutionChain, getPokemon } from "../../api/pokeapi";
 import { getTypeColor } from "../../utils/pokemonTypeColor";
 
 function PaginaDetalles() {
@@ -19,17 +19,8 @@ function PaginaDetalles() {
     const pokemonData = await getPokemon(id);
     setPokemonDetails(pokemonData);
 
-    //erase
-    setPokemonEvolutions([
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-      pokemonData,
-    ]);
+    const pokemonEvolutionsData = await getEvolutionChain(id);
+    setPokemonEvolutions(pokemonEvolutionsData);
   }
 
   useEffect(() => {
